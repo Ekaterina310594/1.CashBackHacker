@@ -1,28 +1,13 @@
 package ru.netology.service;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.Callable;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CashbackHackServiceTest {
 
     @Test
-    public void purchaseFor1000() {
-
-        CashbackHackService service = new CashbackHackService();
-
-        int amount = 0;
-
-        int expected = 1000;
-        int actual = service.remain(amount);
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void purchaseFor800() {
-
+    public void lessThanBorder() {
         CashbackHackService service = new CashbackHackService();
 
         int amount = 200;
@@ -30,12 +15,12 @@ public class CashbackHackServiceTest {
         int expected = 800;
         int actual = service.remain(amount);
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
+
     }
 
     @Test
-    public void purchaseFor0() {
-
+    public void equalToTheBorder() {
         CashbackHackService service = new CashbackHackService();
 
         int amount = 1000;
@@ -43,6 +28,21 @@ public class CashbackHackServiceTest {
         int expected = 0;
         int actual = service.remain(amount);
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
+
     }
+
+    @Test
+    public void moreBorder() {
+        CashbackHackService service = new CashbackHackService();
+
+        int amount = 1500;
+
+        int expected = 500;
+        int actual = service.remain(amount);
+
+        assertEquals(expected, actual);
+    }
+
+
 }
